@@ -15,12 +15,15 @@ class CartScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Padding(
-            padding: const EdgeInsets.only(top: 10, left: 10, bottom: 35, right: 10),
+            padding:
+                const EdgeInsets.only(top: 10, left: 10, bottom: 35, right: 10),
             child: Column(
               children: [
                 Expanded(
                   child: cubit.cartItems.isEmpty
-                      ? const Center(child: CircularProgressIndicator())
+                      ? const Center(
+                          child: Text("add items to cart"),
+                        )
                       : RefreshIndicator(
                           onRefresh: cubit.refreshCartScreen,
                           child: ListView.separated(
@@ -129,7 +132,9 @@ class CartScreen extends StatelessWidget {
                           ),
                         ),
                 ),
-                const SizedBox(height: 15,),
+                const SizedBox(
+                  height: 15,
+                ),
                 Container(
                   alignment: Alignment.center,
                   height: 40,

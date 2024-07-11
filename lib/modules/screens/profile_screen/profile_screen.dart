@@ -80,7 +80,9 @@ class ProfileScreen extends StatelessWidget {
                         await CacheNetwork.deleteCacheData(key: "token");
                         token = await CacheNetwork.getCacheData(key: "token");
                         // ignore: use_build_context_synchronously
-                        Navigator.pushReplacementNamed(context, "splash");
+                        Navigator.pushNamedAndRemoveUntil(
+                              // ignore: use_build_context_synchronously
+                              context, "splash", (route) => false);
                       },
                       color: secondColor,
                       child: const Text(

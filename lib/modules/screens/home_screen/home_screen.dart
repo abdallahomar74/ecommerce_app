@@ -22,7 +22,6 @@ class HomeScreen extends StatelessWidget {
             child: RefreshIndicator(
               onRefresh: cubit.refreshHomeScreen,
               child: ListView(
-                
                 shrinkWrap: true,
                 children: [
                   TextFormField(
@@ -35,8 +34,7 @@ class HomeScreen extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        fillColor: Colors.grey.withOpacity(0.2),
-                        filled: true,
+                     
                         contentPadding: EdgeInsets.zero),
                   ),
                   const SizedBox(
@@ -239,12 +237,10 @@ Widget _productItem({required ProductModel model, required LayoutCubit cubit}) {
       ),
       Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.withOpacity(0.3)),
-          borderRadius: BorderRadius.circular(30)
-        ),
+            border: Border.all(color: Colors.grey.withOpacity(0.3)),
+            borderRadius: BorderRadius.circular(30)),
         child: CircleAvatar(
           backgroundColor: Colors.white,
-          
           child: IconButton(
             onPressed: () {
               cubit.addOrRemoveCarts(productId: model.id.toString());

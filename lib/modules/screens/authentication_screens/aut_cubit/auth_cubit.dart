@@ -29,6 +29,7 @@ class AuthCubit extends Cubit<AuthStates> {
           'phone': phone,
           'email': email,
           'password': password,
+          'image' : "jdfjfj",
         });
     var responseBody = jsonDecode(response.body);
     if (responseBody['status'] == true) {
@@ -57,14 +58,14 @@ class AuthCubit extends Cubit<AuthStates> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         if (data["status"] == true) {
-          // debugPrint("User Login Success And His Data is : $data");
+          await CacheNetwork.deleteCacheData(key: "token");
+          token= "";
           await CacheNetwork.insertToCache(key: "token", value: data['data']['token']);
           await CacheNetwork.insertToCache(key: "password", value: password);
           token = await CacheNetwork.getCacheData(key: "token");
           currentPassword = await CacheNetwork.getCacheData(key: "password");
           emit(LoginSuccessState());
         } else {
-          debugPrint("Failed To Login and The reason is : ${data['message']}");
           emit(FailedToLoginState(message: data['message']));
         }
       }

@@ -6,7 +6,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class RegisterScreen extends StatelessWidget {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -20,9 +19,12 @@ class RegisterScreen extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is RegisterSuccessState) {
-          Navigator.pushReplacementNamed(context, 'layout');
+          showSnackBarItem(
+              context, "you are sign in successfully ,please login now", true);
+          Navigator.pushNamedAndRemoveUntil(
+              context, "splash", (route) => false);
         } else if (state is FailedToRegisterState) {
-         showSnackBarItem(context, state.message , false);
+          showSnackBarItem(context, state.message, false);
         }
       },
       builder: (context, state) {

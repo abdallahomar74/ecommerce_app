@@ -18,9 +18,10 @@ class LayoutScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: Image.asset("assets/images/logo.png",
-                  height: 80, width: 140, color: Colors.white),
-              backgroundColor: Colors.indigo,
+                  color: mainColor, height: 80, width: double.infinity,),
+              backgroundColor: Colors.transparent,
               titleSpacing: 25,
+
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
@@ -32,7 +33,7 @@ class LayoutScreen extends StatelessWidget {
               child: Icon(
                 Icons.home,
                 color: cubit.bottomNavIndex == 4
-                    ?  const Color.fromARGB(255, 167, 134, 255)
+                    ? const Color.fromARGB(255, 167, 134, 255)
                     : Colors.white,
               ),
             ),

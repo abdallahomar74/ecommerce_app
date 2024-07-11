@@ -37,18 +37,22 @@ class FavoritesScreen extends StatelessWidget {
                 Expanded(
                   child: RefreshIndicator(
                     onRefresh: cubit.refreshFavoriteScreen,
-                    child: ListView.builder(
-                      itemCount: cubit.filteredFavoriteProducts.isEmpty
-                          ? cubit.favorites.length
-                          : cubit.filteredFavoriteProducts.length,
-                      itemBuilder: (context, index) {
-                        return _favoriteProductItems(
-                            cubit: cubit,
-                            model: cubit.filteredFavoriteProducts.isEmpty
-                                ? cubit.favorites[index]
-                                : cubit.filteredFavoriteProducts[index]);
-                      },
-                    ),
+                    child: cubit.favorites.isEmpty
+                        ? const Center(
+                            child: Text("add items to favorites"),
+                          )
+                        : ListView.builder(
+                            itemCount: cubit.filteredFavoriteProducts.isEmpty
+                                ? cubit.favorites.length
+                                : cubit.filteredFavoriteProducts.length,
+                            itemBuilder: (context, index) {
+                              return _favoriteProductItems(
+                                  cubit: cubit,
+                                  model: cubit.filteredFavoriteProducts.isEmpty
+                                      ? cubit.favorites[index]
+                                      : cubit.filteredFavoriteProducts[index]);
+                            },
+                          ),
                   ),
                 )
               ],
